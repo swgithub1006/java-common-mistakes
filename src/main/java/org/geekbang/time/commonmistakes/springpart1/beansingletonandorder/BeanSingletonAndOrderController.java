@@ -17,6 +17,7 @@ public class BeanSingletonAndOrderController {
 
     @Autowired
     List<SayService> sayServiceList;
+    
     @Autowired
     private ApplicationContext applicationContext;
 
