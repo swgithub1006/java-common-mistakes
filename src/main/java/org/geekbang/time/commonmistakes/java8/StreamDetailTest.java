@@ -198,9 +198,14 @@ public class StreamDetailTest {
                 .entrySet().forEach(System.out::println);
 
         System.out.println("//订单平均购买的商品数量");
+        /*
         System.out.println(orders.stream().collect(averagingInt(order ->
                 order.getOrderItemList().stream()
                         .collect(summingInt(OrderItem::getProductQuantity)))));
+        */
+        System.out.println(orders.stream().collect(averagingInt(order ->
+        order.getOrderItemList().stream()
+        .collect(summingInt(OrderItem::getProductQuantity)))).doubleValue());
     }
 
     @Test

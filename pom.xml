@@ -17,7 +17,7 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
         <spring-data.version>Moore-SR4</spring-data.version>
-
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -137,12 +137,12 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.9</version>
+            <version>4.5.9</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>fluent-hc</artifactId>
-            <version>4.5.9</version>
+            <version>4.5.9</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
@@ -151,7 +151,7 @@
         <dependency>
             <groupId>org.influxdb</groupId>
             <artifactId>influxdb-java</artifactId>
-            <version>2.17</version>
+            <version>2.17</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
