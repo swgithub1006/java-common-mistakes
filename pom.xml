@@ -167,7 +167,18 @@
         <!--            <artifactId>p6spy-spring-boot-starter</artifactId>-->
         <!--            <version>1.6.1</version>-->
         <!--        </dependency>-->
-
+		
+		<dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.9.6</version><!--$NO-MVN-MAN-VER$-->
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-agent</artifactId>
+            <version>1.9.6</version><!--$NO-MVN-MAN-VER$-->
+        </dependency>
+        
     </dependencies>
 
     <build>
