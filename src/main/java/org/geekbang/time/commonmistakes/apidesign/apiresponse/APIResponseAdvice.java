@@ -19,9 +19,9 @@ public class APIResponseAdvice implements ResponseBodyAdvice<Object> {
 
     //自动处理APIException，包装为APIResponse
     @ExceptionHandler(APIException.class)
-    public APIResponse handleApiException(HttpServletRequest request, APIException ex) {
+    public APIResponse<?> handleApiException(HttpServletRequest request, APIException ex) {
         log.error("process url {} failed", request.getRequestURL().toString(), ex);
-        APIResponse apiResponse = new APIResponse();
+        APIResponse<?> apiResponse = new APIResponse<>();
         apiResponse.setSuccess(false);
         apiResponse.setCode(ex.getErrorCode());
         apiResponse.setMessage(ex.getErrorMessage());
@@ -30,7 +30,7 @@ public class APIResponseAdvice implements ResponseBodyAdvice<Object> {
 
     //仅当方法或类没有标记@NoAPIResponse才自动包装
     @Override
-    public boolean supports(MethodParameter returnType, Class converterType) {
+    public boolean supports(MethodParameter returnType, @SuppressWarnings("rawtypes") Class converterType) {
         return returnType.getParameterType() != APIResponse.class
                 && AnnotationUtils.findAnnotation(returnType.getMethod(), NoAPIResponse.class) == null
                 && AnnotationUtils.findAnnotation(returnType.getDeclaringClass(), NoAPIResponse.class) == null;
@@ -39,7 +39,7 @@ public class APIResponseAdvice implements ResponseBodyAdvice<Object> {
     //自动包装外层APIResposne响应
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        APIResponse apiResponse = new APIResponse();
+        APIResponse<Object> apiResponse = new APIResponse<>();
         apiResponse.setSuccess(true);
         apiResponse.setMessage("OK");
         apiResponse.setCode(2000);
